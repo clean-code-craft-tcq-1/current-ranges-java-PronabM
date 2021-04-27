@@ -1,5 +1,6 @@
 package battery;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,9 @@ public final class CurrentRangeMonitor
 {
     public static Map<String,Integer> countCurrentRangeOccurrence(List<Integer> readings)
     {
-		return null;
+    	if(readings.isEmpty())
+    		return null;
+    	
+    	return new HashMap<String,Integer>();
     }
 }
