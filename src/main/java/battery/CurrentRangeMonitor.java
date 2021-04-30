@@ -1,6 +1,5 @@
 package battery;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -13,19 +12,15 @@ public final class CurrentRangeMonitor
 {
 	private CurrentRangeMonitor() {}
 	
-	@SafeVarargs
-	private static <T> Predicate<T> atleastOne(Predicate<T> ... predicates) {
-	    return Arrays.stream(predicates).reduce(Predicate::or).orElse(x -> false);
-	}
-	
 	private static <T> Predicate<T> isNull() {
 		return Objects::isNull;
 	}
 
 	private static Predicate<Object> isNull = isNull();
+	private static Predicate<List<Integer>> isListNull = isNull();
 	private static Predicate<List<Integer>> isEmpty = x -> x.isEmpty();
 	private static Predicate<List<Integer>> containsNull = x -> x.stream().anyMatch(isNull);
-	private static Predicate<List<Integer>> isInvalid = atleastOne(isNull(),isEmpty,containsNull);
+	private static Predicate<List<Integer>> isInvalid = isListNull.or(isEmpty.or(containsNull));
 	
     public static Map<String,Integer> countCurrentRangeOccurrence(List<Integer> readings)
     {
