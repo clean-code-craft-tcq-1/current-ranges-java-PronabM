@@ -55,3 +55,4 @@ Implement one failing test and at least one passing test:
 - `whenCurrentRangeReadingEmpty_expectNull` is a **passing** test.
 - `whenReadingsContainSingleRange_expectSingleKeyWithLengthAsValue` is a **failing** test.
 
+**Note:** Followed several iterations of adding a new test-case and then adding the implementation to get current result. 
