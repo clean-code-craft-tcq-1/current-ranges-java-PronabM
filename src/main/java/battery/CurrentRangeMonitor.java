@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 
 public final class CurrentRangeMonitor 
 {
+	private CurrentRangeMonitor() {}
 	
 	@SafeVarargs
 	private static <T> Predicate<T> atleastOne(Predicate<T> ... predicates) {
